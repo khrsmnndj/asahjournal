@@ -122,7 +122,7 @@ exports.CategoryPage = async (req, res) => {
         { where: { author: session.username, acc: true } },
         { order: [["updatedAt", "DESC"]] }
       );
-      // res.json({latest})
+      // res.json({latest});
       return res.render("searchpage/categorypagein", {
         category,
         categoryInput,
@@ -131,7 +131,7 @@ exports.CategoryPage = async (req, res) => {
         admin: User.admin,
       });
     } else {
-      // return res.json({latest})
+      // return res.json({latest});
       return res.render("searchpage/categorypageout", { category, categoryInput });
     }
   } catch (error) {
