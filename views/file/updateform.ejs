@@ -1,0 +1,102 @@
+<div class="maincontainer">
+  <h1 class="maintitle">Update Artikel</h1>
+  <p class="maincontent">Tanggal: <%=Today%></p>
+  <% if (admin) {%>
+  <a href="/admin" class="btn btn-success">Kembali</a>
+  <%} else {%>
+  <a href="/profile" class="btn btn-success">Kembali</a>
+  <%}%>
+  <hr class="mainseparator" />
+
+  <form
+    action="/updatepost/<%=Post.id%>"
+    method="post"
+    enctype="multipart/form-data"
+    class="form-floating mb-3"
+  >
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="<%=Post.title%>"
+        value="<%=Post.title%>"
+      />
+    </div>
+    <select
+      class="form-select mb-3"
+      aria-label="Default select example"
+      id="category"
+      name="category"
+    >
+      <option selected value="<%=Post.category%>">
+        Kategori: <%=Post.category%>
+      </option>
+      <option value="Kedokteran">Kedokteran</option>
+      <option value="Teknik">Teknik</option>
+      <option value="Umum">Umum</option>
+    </select>
+    <select
+      class="form-select mb-3"
+      aria-label="Default select example"
+      id="payfor"
+      name="payfor"
+    >
+      <option selected value="<%=Post.version%>">
+        Tipe: <%=Post.version%>
+      </option>
+      <option value="Free">Gratis</option>
+      <option value="Premium">Premium</option>
+    </select>
+    <div class="mb-3">
+      <span>Datfar isi</span>
+      <input
+        class="form-control"
+        type="file"
+        id="frontfiles"
+        name="frontfiles"
+        accept="application/pdf"
+        value="/uploads/articlefiles/<%=Post.files%>"
+      />
+    </div>
+    <div class="mb-3">
+      <span>Full file</span>
+      <input
+        class="form-control"
+        type="file"
+        id="upload"
+        name="upload"
+        accept="application/pdf"
+        value="/uploads/articlefiles/<%=Post.files%>"
+      />
+    </div>
+
+    <div class="mb-3">
+      <textarea
+        class="form-control"
+        id="content"
+        name="content"
+        rows="3"
+        placeholder="Sinopsis artikel..."
+      >
+<%=Post.content%></textarea
+      >
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Rp</span>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        min="0"
+        placeholder="Masukan harga... contoh: 2000, tanpa titik atau koma"
+        value="<%=Post.price%>"
+      />
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Update</button>
+    </div>
+  </form>
+</div>

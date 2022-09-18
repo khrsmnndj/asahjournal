@@ -1,0 +1,106 @@
+:root{
+    --dark-swamp:rgb(1, 80, 54);
+    --swamp:rgb(1, 107, 72);
+    --dark-teal: #05716c;
+    --teal: #1fbfb8;
+    --dark-blue: #031163;
+    --blue: #1978a5;
+}
+
+.btn-success{
+    background-color: var(--swamp);
+}
+
+.btn-success:hover{
+    background-color: var(--dark-swamp);
+}
+
+.btn-light:hover{
+    background-color: rgb(233, 233, 233);
+    border-color: rgb(233, 233, 233);
+}
+
+.badge{
+    background-color: var(--dark-teal);
+    position: absolute;
+
+
+    margin: 10px;
+}
+
+.cat{
+    bottom: 0;
+    left: 0;
+}
+
+.pay{
+    top:-15px;
+    left: -15px;
+}
+
+.bg-info{
+    color: var(--dark-blue);
+}
+
+.card{
+    margin-bottom: 30px;
+    height: 250px;
+}
+
+.card-title{
+    font-weight: 300;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.card-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(0, 77, 54);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+
+    /* Position the tooltip */
+    position: absolute;
+    top: 45px;
+    z-index: 1;
+}
+
+.card-tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.card-text{
+    white-space: normal;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-link {
+    color: var(--dark-teal);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+}
+
+.card-link:active {
+    color: var(--teal);
+}
+
+.card-link:hover {
+    color: var(--teal);
+}
+
+
+
+

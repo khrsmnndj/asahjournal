@@ -1,0 +1,186 @@
+<nav class="searchcontainer shadow-sm">
+  <a href="/" class="navhome">
+    <div class="logocontainer">
+      <div class="logoimg">
+        <img class="logo" src="/contents/flip-a-bird.gif" alt="" />
+      </div>
+      <div class="logoname">Asah<br />Journal</div>
+    </div>
+    <span class="tooltiptext">Beranda</span>
+  </a>
+
+  <div class="searchblock">
+    <form class="searchform" action="/search" method="POST">
+      <input
+        class="searchitem shadow-sm"
+        type="search"
+        name="request"
+        id="request"
+        spellcheck="false"
+        placeholder="Cari pustaka..."
+      />
+      <i class="bx bx-search icon"></i>
+    </form>
+  </div>
+
+  <a href="/profile" class="accountcontainer" style="display: none">
+    <div class="accountimg">
+      <p class="accountname">Jorden</p>
+      <img class="profileimg" src="/contents/profile.png" alt="" />
+    </div>
+  </a>
+</nav>
+<nav class="navigation">
+  <a href="/allpagehistory" class="navitem">Pustaka</a>
+  <div class="dropdown">
+    <a
+      class="navitem dropdown-toggle"
+      href="#"
+      role="button"
+      id="dropdownMenuLink"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Kategori
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li>
+        <a class="dropdown-item" href="/category/Kedokteran">Kedokteran</a>
+      </li>
+      <li><a class="dropdown-item" href="/category/Teknik">Teknik</a></li>
+      <li><a class="dropdown-item" href="/category/Umum">Umum</a></li>
+    </ul>
+  </div>
+  <a href="/" class="navitem">Jasa Web</a>
+  <a href="/login" class="navitem">Login</a>
+  <a href="/register" class="navitem">Register</a>
+</nav>
+<section class="vh-100 credcontainer">
+  <div>
+    <h1 class="credtitle"><%=dataprob%></h1>
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-80">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img
+            src="/contents/travelling.svg"
+            class="img-fluid"
+            alt="Sample image"
+          />
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 credbottom">
+          <form action="/login" method="post">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control form-control-lg"
+                placeholder="Masukan email"
+              />
+              <label class="form-label" for="email"
+                >Gunakan email teregistrasi</label
+              >
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control form-control-lg"
+                placeholder="Masukan password"
+              />
+              <label class="form-label" for="password">Password</label>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button
+                type="submit"
+                class="btn btn-success btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem"
+              >
+                Login
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">
+                Belum punya akun?
+                <a href="/register" class="link-success">Register</a>
+              </p>
+            </div>
+          </form>
+          <button
+            type="button"
+            class="text-body"
+            style="border: none; background-color: white"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-bs-whatever="@mdo"
+          >
+            Lupa Password?
+          </button>
+
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Kirim link reset ke email mu
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form
+                    action="/resetpass"
+                    method="post"
+                  >
+                    <div class="mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email2"
+                        name="email2"
+                        placeholder="email@valid.com"
+                      />
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Batal
+                      </button>
+                      <button type="submit" class="btn btn-success">
+                        Unggah
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footercontainer">
+  <p>Contact</p>
+  <a class="contactinfo" href="#">+62 812 345 6789</a>
+  <p>&copy; Copyright 2022 | Jorden Junior</p>
+      <a class="contactinfo" href="/dev">Developer</a>
+</footer>

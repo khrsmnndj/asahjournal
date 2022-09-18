@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Admin Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="admin.css">
+                
+        <script type="text/javascript">
+            function Swipe(div1, div2){
+                d1 = document.getElementById(div1)
+                d2 = document.getElementById(div2)
+
+                d1.style.display = "block";
+                d2.style.display = "none";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="admin-content">
+            <div class="left">
+                    <a class="left-options" href="#">Admin1@asahjournal.com</a>
+                    <a class="left-options" href="javascript:Swipe('user-div', 'post-div')">User</a>
+                    <a class="left-options" href="javascript:Swipe('post-div', 'user-div')">Post</a>
+            </div>
+    
+            <div class="right">
+                <div class="table-block" style="display:block" id="user-div">
+                    <h1>Show user page.</h1>
+                    <table id="users">
+                        <tr>
+                          <th>User</th>
+                          <th>Email</th>
+                          <th>Gems</th>
+                          <th>Delete</th>
+                        </tr>
+                        <tr>
+                          <td>Alfreds</td>
+                          <td>alfreds@gmail.com</td>
+                          <td>Germany</td>
+                          <td>Delete</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds</td>
+                            <td>alfreds@gmail.com</td>
+                            <td>Germany</td>
+                            <td>Delete</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds</td>
+                            <td>alfreds@gmail.com</td>
+                            <td>Germany</td>
+                            <td>Delete</td>
+                        </tr>
+                      </table>
+                </div>
+                <div class="table-block" style="display:none" id="post-div">
+                    <h1>Show post page.</h1>
+                    <table id="posts">
+                        <tr>
+                          <th>Author</th>
+                          <th>Title</th>
+                          <th>Price</th>
+                          <th>Accept</th>
+                          <th>Delete</th>
+                        </tr>
+                        <tr>
+                          <td>Alfreds</td>
+                          <td>Research of Science and Medical Black Magic</td>
+                          <td>3000</td>
+                          <td>Accept</td>
+                          <td>Delete</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds</td>
+                            <td>Research of Science and Medical Black Magic</td>
+                            <td>3000</td>
+                            <td>Accept</td>
+                            <td>Delete</td>
+                        </tr>
+                        <tr>
+                            <td>Alfreds</td>
+                            <td>Research of Science and Medical Black Magic</td>
+                            <td>3000</td>
+                            <td>Accept</td>
+                            <td>Delete</td>
+                        </tr>
+                        
+                      </table>
+                </div>
+            </div>
+        </div>
+
+    </body>

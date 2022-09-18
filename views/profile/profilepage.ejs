@@ -1,0 +1,512 @@
+<body>
+  <nav class="searchcontainer shadow-sm">
+    <a href="/" class="navhome">
+      <div class="logocontainer">
+        <div class="logoimg">
+          <img class="logo" src="/contents/flip-a-bird.gif" alt="" />
+        </div>
+        <div class="logoname">Asah<br />Journal</div>
+      </div>
+      <span class="tooltiptext">Beranda</span>
+    </a>
+
+    <div class="searchblock">
+      <form class="searchform" action="/search" method="POST">
+        <input
+          class="searchitem shadow-sm"
+          type="search"
+          name="request"
+          id="request"
+          spellcheck="false"
+          placeholder="Cari pustaka..."
+        />
+        <i class="bx bx-search icon"></i>
+      </form>
+    </div>
+
+    <a href="/profile" class="accountcontainer" style="display: none">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt=""
+        />
+      </div>
+    </a>
+  </nav>
+  <div class="userviewcontainer">
+    <div class="userinfocontainer">
+      <nav class="userviewnav">
+        <a href="/payment" class="userviewnavitem">Deposit+</a>
+        <a href="/withdraw" class="userviewnavitem">Withdraw-</a>
+        <a href="/updateuser/<%=User.id%>" class="userviewnavitem"
+          >Update Profile</a
+        >
+      </nav>
+      <div class="userviewcontent">
+        <img
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt=""
+          class="userimage shadow-sm"
+        />
+        <p class="username"><%=User.username%></p>
+        <p class="useremail">
+          <i class="bi bi-envelope"></i> | <%=User.email%>
+        </p>
+        <p class="useremail">
+          <i class="bi bi-telephone"></i> | <%=User.phone%>
+        </p>
+        <p class="useremail">
+          <i class="bi bi-linkedin"></i> | <%=User.linkedin%>
+        </p>
+        <p class="userpoint">Rp <%=User.wallet%></p>
+        <p class="userpostcount"><%=Post.length%> Post</p>
+      </div>
+    </div>
+    <div class="postinfocontainer">
+      <nav class="userviewnav">
+        <a
+          onclick="Swipe('verified', 'unverified', 'pendingpayment', 'accpayment')"
+          class="userviewnavitem"
+          >Verified Posts</a
+        >
+        <a
+          onclick="Swipe('unverified', 'verified', 'pendingpayment', 'accpayment')"
+          class="userviewnavitem"
+          >Unverified Post</a
+        >
+        <a
+          onclick="Swipe('pendingpayment', 'unverified', 'verified', 'accpayment')"
+          class="userviewnavitem"
+          >Pending Payment</a
+        >
+        <a
+          onclick="Swipe('accpayment', 'unverified', 'verified', 'pendingpayment')"
+          class="userviewnavitem"
+          >Pending Withdrawal</a
+        >
+      </nav>
+      <div class="postscroll" id="verified" style="display: block">
+        <div class="whitespace"><h3>Postingan Terverifikasi</h3></div>
+        <table>
+          <tr class="headingpost contentpost">
+            <th>Date</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          <% if (Post.length != ''){ Post.forEach((article)=>{%>
+          <tr class="contentpost">
+            <td><%=article.updatedAt%></td>
+            <td>
+              <a href="/postparticle/<%=article.id%>"> <%=article.title%> </a>
+            </td>
+            <td>Rp <%=article.price%></td>
+            <td><%=article.acc%></td>
+            <td>
+              <a href="/updatepost/<%=article.id%>">
+                <i class="bx bxs-edit-alt"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/deletepost/<%=article.id%>">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <%})} else {%>
+          <tr class="contentpost">
+            <td><%=Today%></td>
+            <td>
+              <a href=""> No Articles Found </a>
+            </td>
+            <td>Rp 0</td>
+            <td>Unknown</td>
+            <td>
+              <a href="">
+                <i class="bx bxs-edit-alt"></i>
+              </a>
+            </td>
+            <td>
+              <a href="">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+
+          <%}%>
+        </table>
+      </div>
+      <div class="postscroll" id="unverified" style="display: none">
+        <div class="whitespace"><h3>Postingan Belum Terverifikasi</h3></div>
+        <table>
+          <tr class="headingpost contentpost">
+            <th>Date</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          <% if (PostUnknown.length != ''){ PostUnknown.forEach((article)=>{%>
+          <tr class="contentpost">
+            <td><%=article.updatedAt%></td>
+            <td>
+              <a href="/postparticle/<%=article.id%>"> <%=article.title%> </a>
+            </td>
+            <td>Rp <%=article.price%></td>
+            <td><%=article.acc%></td>
+            <td>
+              <a href="/updatepost/<%=article.id%>">
+                <i class="bx bxs-edit-alt"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/deletepost/<%=article.id%>">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <%})} else {%>
+          <tr class="contentpost">
+            <td><%=Today%></td>
+            <td>
+              <a href=""> No Articles Found </a>
+            </td>
+            <td>Rp 0</td>
+            <td>Unknown</td>
+            <td>
+              <a href="">
+                <i class="bx bxs-edit-alt"></i>
+              </a>
+            </td>
+            <td>
+              <a href="">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+
+          <%}%>
+        </table>
+      </div>
+      <div class="postscroll" id="pendingpayment" style="display: none">
+        <div class="whitespace"><h3>Pembayaran Belum Terverifikasi</h3></div>
+        <table>
+          <tr class="headingpost contentpost">
+            <th>Date</th>
+            <th>User</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+          <% if (PaymentPending.length != ''){
+          PaymentPending.forEach((article)=>{%>
+          <tr class="contentpost">
+            <td><%=article.updatedAt%></td>
+            <td>
+              <a href="/viewpayment/<%=article.id%>"> <%=article.user%> </a>
+            </td>
+            <td>Rp <%=article.price%></td>
+            <td><%=article.acc%></td>
+            <td>
+              <a href="/paymentupdate/<%=article.id%>">
+                <i class="bx bxs-edit-alt"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/paymentdelete/<%=article.id%>">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <%})} else {%>
+          <tr class="contentpost">
+            <td><%=Today%></td>
+            <td>
+              <a href=""> No Articles Found </a>
+            </td>
+            <td>Rp 0</td>
+            <td>Unknown</td>
+            <td>
+              <a href="">
+                <i class="bx bxs-edit-alt"></i>
+              </a>
+            </td>
+            <td>
+              <a href="">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+
+          <%}%>
+        </table>
+      </div>
+      <div class="postscroll" id="accpayment" style="display: none">
+        <div class="whitespace"><h3>Penarikan Belum Terverifikasi</h3></div>
+        <table>
+          <tr class="headingpost contentpost">
+            <th>Date</th>
+            <th>User</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Delete</th>
+          </tr>
+          <% if (Withdraw.length != ''){ Withdraw.forEach((article)=>{%>
+          <tr class="contentpost">
+            <td><%=article.updatedAt%></td>
+            <td>
+              <a href=""> <%=article.user%> </a>
+            </td>
+            <td>Rp <%=article.price%></td>
+            <td><%=article.acc%></td>
+            <td>
+              <a href="">
+                <i class="bi bi-archive-fill"></i>
+              </a>
+            </td>
+            <td>
+              <a href="/withdrawdrawdelete/<%=article.id%>">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <%})} else {%>
+          <tr class="contentpost">
+            <td><%=Today%></td>
+            <td>
+              <a href=""> No Articles Found </a>
+            </td>
+            <td>Rp 0</td>
+            <td>Unknown</td>
+            <td>
+              <a href="">
+                <i class="bi bi-archive-fill"></i>
+              </a>
+            </td>
+            <td>
+              <a href="">
+                <i class="bx bxs-trash"></i>
+              </a>
+            </td>
+          </tr>
+
+          <%}%>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="postbuttonarticle">
+    <button
+      type="button"
+      class="stickypostbutton shadow-sm"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo"
+    >
+      <i class="bx bxs-edit-alt goitem"></i>
+    </button>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Posting Artikel</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form
+              action="/submitprofile"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="title"
+                  placeholder="Judul artikel..."
+                  required
+                />
+              </div>
+              <select
+                class="form-select mb-3"
+                aria-label="Default select example"
+                id="category"
+                name="category"
+                required
+              >
+                <option selected disabled>Pilih kategori</option>
+                <option value="Kedokteran">Kedokteran</option>
+                <option value="Teknik">Teknik</option>
+                <option value="Umum">Umum</option>
+              </select>
+              <select
+                class="form-select mb-3"
+                aria-label="Default select example"
+                id="payfor"
+                name="payfor"
+                required
+              >
+                <option selected disabled>Pilih tipe</option>
+                <option value="Free">Gratis</option>
+                <option value="Premium">Premium</option>
+              </select>
+              <div class="mb-3">
+                <span>Halaman daftar isi</span>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="frontfiles"
+                  name="frontfiles"
+                  accept="application/pdf"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <span>Full file</span>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="upload"
+                  name="upload"
+                  accept="application/pdf"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  id="content"
+                  name="content"
+                  rows="3"
+                  placeholder="Sinopsis artikel..."
+                  required
+                ></textarea>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Rp</span>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="price"
+                  name="price"
+                  min="0"
+                  placeholder="Masukan harga... contoh: 2000, tanpa titik atau koma"
+                  required
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button type="submit" class="btn btn-success">Unggah</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- offcanvas -->
+  <div class="menubutton">
+    <button
+      class="stickymenubutton shadow-sm"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions"
+      aria-controls="offcanvasWithBothOptions"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+      style="width: 300px"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          <a href="/" class="userviewnavitem"
+            ><i class="bx bxs-home"></i> | Asah Journal</a
+          >
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="userviewcontent">
+          <img
+            src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+            alt=""
+            class="userimage"
+            style="width: 40%"
+          />
+          <p class="username"><%=User.username%></p>
+          <p class="useremail"><%=User.email%></p>
+          <p class="useremail"><%=User.phone%></p>
+          <p class="useremail"><%=User.linkedin%></p>
+          <p class="userpoint">Rp <%=User.wallet%></p>
+          <p class="userpostcount"><%=Post.length%> Post</p>
+          <div style="padding-left: 40px">
+            <a href="/payment" class="btn btn-secondary">Deposit</a>
+            <a href="/updateuser/<%=User.id%>" class="btn btn-success"
+              >Update Profile</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footercontainer">
+    <p>Contact</p>
+    <a class="contactinfo" href="#">+62 812 345 6789</a>
+    <p>&copy; Copyright 2022 | Jorden Junior</p>
+        <a class="contactinfo" href="/dev">Developer</a>
+  </footer>
+  <script type="text/javascript">
+    function Swipe(div1, div2, div3, div4) {
+      d1 = document.getElementById(div1);
+      d2 = document.getElementById(div2);
+      d3 = document.getElementById(div3);
+      d4 = document.getElementById(div4);
+
+      d1.style.display = "block";
+      d2.style.display = "none";
+      d3.style.display = "none";
+      d4.style.display = "none";
+    }
+  </script>
+</body>

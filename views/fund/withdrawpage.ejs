@@ -1,0 +1,36 @@
+<div class="maincontainer">
+  <%if(dataprob != ''){%>
+  <h1 class="maintitle"><%=dataprob%></h1>
+  <%}else{%>
+  <h1 class="maintitle">Withdraw Saldo</h1>
+  <%}%>
+  <p class="maincontent">Tanggal: <%=Today%></p>
+
+  <a href="/profile" class="btn btn-success">Kembali</a>
+
+  <hr class="mainseparator" />
+
+  <form
+    action=""
+    method="post"
+    enctype="multipart/form-data"
+    class="form-floating mb-3"
+  >
+    <div class="input-group mb-3">
+      <span class="input-group-text">Rp</span>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        min="0"
+        placeholder="Masukan harga... contoh: 2000, tanpa titik atau koma"
+        value=""
+      />
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Withdraw</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,311 @@
+<body class="adminbody">
+  <div class="admincontainer">
+    <div class="adminleft">
+      <div class="admincontrol" style="height: 50px">@adm^<%=adminname%></div>
+      <a
+        onclick="Swipe('edituser', 'unverifiedpost', 'withdraw', 'payment', 'emailuser')"
+        class="admincontrol"
+        >Kelola User</a
+      >
+      <a
+        onclick="Swipe('unverifiedpost', 'edituser', 'withdraw', 'payment', 'emailuser')"
+        class="admincontrol"
+        >Verifikasi Postingan</a
+      >
+      <a
+        onclick="Swipe('withdraw', 'edituser', 'unverifiedpost', 'payment', 'emailuser')"
+        class="admincontrol"
+        >Verifikasi Penarikan</a
+      >
+      <a
+        onclick="Swipe('payment', 'edituser', 'unverifiedpost', 'withdraw', 'emailuser')"
+        class="admincontrol"
+        >Verifikasi Pembayaran</a
+      >
+      <a
+        onclick="Swipe('emailuser', 'edituser', 'unverifiedpost', 'withdraw', 'payment')"
+        class="admincontrol"
+        >Email User</a
+      >
+      <a href="/" class="admincontrol"> Home Page </a>
+    </div>
+    <div class="adminright">
+      <div class="admincontent" id="edituser" style="display: block">
+        <div class="postscroll">
+          <div class="whitespace">
+            <h3>User Asah Journal</h3>
+          </div>
+          <table>
+            <tr class="headingpost contentpost">
+              <th>Email</th>
+              <th>Username</th>
+              <th>Deposit</th>
+              <th>Status</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+            <% if (User !=''){ User.forEach((userasah) => { %>
+
+            <tr class="contentpost">
+              <td><%=userasah.email%></td>
+              <td>
+                <a href=""><%=userasah.username%></a>
+              </td>
+              <td>Rp<%=userasah.wallet%></td>
+              <td><%=userasah.verify%></td>
+              <td>
+                <a href="/updateuser/<%=userasah.id%>">
+                  <i class="bx bxs-edit-alt"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/deleteuser/<%=userasah.id%>">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <% })} else { %>
+            <tr class="contentpost">
+              <td>noemail@mail.com</td>
+              <td>
+                <a href="">User not found</a>
+              </td>
+              <td>Rp0</td>
+              <td>Unknown</td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-edit-alt"></i>
+                </a>
+              </td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+
+            <% } %>
+          </table>
+        </div>
+      </div>
+      <div class="admincontent" id="unverifiedpost" style="display: none">
+        <div class="postscroll">
+          <div class="whitespace">
+            <h3>Postingan Belum Terverifikasi</h3>
+          </div>
+          <table>
+            <tr class="headingpost contentpost">
+              <th>Date</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Accept</th>
+              <th>Delete</th>
+            </tr>
+            <% if (Post !=''){Post.forEach((posting)=>{%>
+            <tr class="contentpost">
+              <td><%=posting.updatedAt%></td>
+              <td>
+                <a href="/postparticle/<%=posting.id%>"><%=posting.title%></a>
+              </td>
+              <td>Rp <%=posting.price%></td>
+              <td><%=posting.acc%></td>
+              <td>
+                <a href="/accept/<%=posting.id%>">
+                  <i class="bi bi-check-square-fill"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/deletepost/<%=posting.id%>">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <% })} else { %>
+            <tr class="contentpost">
+              <td><%=Today%></td>
+              <td>
+                <a href="">No post found</a>
+              </td>
+              <td>Rp0</td>
+              <td>Unknown</td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-edit-alt"></i>
+                </a>
+              </td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+      <div class="admincontent" id="withdraw" style="display: none">
+        <div class="postscroll">
+          <div class="whitespace">
+            <h3>Verifikasi Penarikan</h3>
+          </div>
+          <table>
+            <tr class="headingpost contentpost">
+              <th>Date</th>
+              <th>Archive</th>
+              <th>Request</th>
+              <th>Status</th>
+              <th>Accept</th>
+              <th>Delete</th>
+            </tr>
+            <%if (Withdraw.length!=''){Withdraw.forEach((paydown)=>{%>
+
+            <tr class="contentpost">
+              <td><%=paydown.updatedAt%></td>
+              <td>
+                <i class="bi bi-archive-fill"></i>
+              </td>
+              <td>Rp <%=paydown.price%></td>
+              <td><%=paydown.acc%></td>
+              <td>
+                <a href="/acceptwithdraw/<%=paydown.id%>">
+                  <i class="bi bi-check-square-fill"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/withdrawdelete/<%=paydown.id%>">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <%})} else {%>
+            <tr class="contentpost">
+              <td><%=Today%></td>
+              <td>
+                <a href="">No withdrawal found</a>
+              </td>
+              <td>Rp0</td>
+              <td>Unknown</td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-edit-alt"></i>
+                </a>
+              </td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+      <div class="admincontent" id="payment" style="display: none">
+        <div class="postscroll">
+          <div class="whitespace">
+            <h3>Verifikasi Pembayaran</h3>
+          </div>
+          <table>
+            <tr class="headingpost contentpost">
+              <th>Date</th>
+              <th>Username</th>
+              <th>Request</th>
+              <th>Status</th>
+              <th>Accept</th>
+              <th>Delete</th>
+            </tr>
+            <%if (Payment.length!=''){Payment.forEach((pay)=>{%>
+
+            <tr class="contentpost">
+              <td><%=pay.updatedAt%></td>
+              <td>
+                <a href="/viewpayment/<%=pay.id%>"><%=pay.user%></a>
+              </td>
+              <td>Rp <%=pay.price%></td>
+              <td><%=pay.acc%></td>
+              <td>
+                <a href="/acceptpayment/<%=pay.id%>">
+                  <i class="bi bi-check-square-fill"></i>
+                </a>
+              </td>
+              <td>
+                <a href="/paymentdelete/<%=pay.id%>">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <%})} else {%>
+            <tr class="contentpost">
+              <td><%=Today%></td>
+              <td>
+                <a href="">No Payment found</a>
+              </td>
+              <td>Rp0</td>
+              <td>Unknown</td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-edit-alt"></i>
+                </a>
+              </td>
+              <td>
+                <a href="">
+                  <i class="bx bxs-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+      <div class="admincontent" id="emailuser" style="display: none">
+        <form action="/sendmail" method="post" class="credformadmin">
+          <h3 class="emailformadmin">Kirimkan email kepada user...</h3>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="credinputadmin"
+            placeholder="email user..."
+          />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="credinputadmin"
+            placeholder="tajuk..."
+          />
+          <br /><label class="msgfilelabel" for="file"
+            ><i>input fie yang mungkin diperlukan...</i></label
+          ><br />
+
+          <textarea
+            name="message"
+            id="message"
+            cols="90"
+            rows="50"
+            class="credinputadmin"
+            style="padding: 0 20px; height: 100px"
+            placeholder="input pesan..."
+          ></textarea>
+          <a type="submit" class="adminbutton">Kirim</a>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function Swipe(div1, div2, div3, div4, div5) {
+      d1 = document.getElementById(div1);
+      d2 = document.getElementById(div2);
+      d3 = document.getElementById(div3);
+      d4 = document.getElementById(div4);
+      d5 = document.getElementById(div5);
+
+      d1.style.display = "block";
+      d2.style.display = "none";
+      d3.style.display = "none";
+      d4.style.display = "none";
+      d5.style.display = "none";
+    }
+  </script>
+</body>

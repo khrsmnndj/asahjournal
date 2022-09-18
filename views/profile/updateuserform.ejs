@@ -1,0 +1,74 @@
+<div class="maincontainer">
+  <h1 class="maintitle">Update Profil <%=User.username%></h1>
+  <p class="maincontent">Tanggal: <%=Today%></p>
+  <div>
+    <img
+      src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+      alt=""
+      class="userimageupdate shadow-sm"
+    />
+  </div>
+
+  <% if (admin) {%>
+  <a href="/admin" class="btn btn-success">Kembali</a>
+  <%} else {%>
+  <a href="/profile" class="btn btn-success">Kembali</a>
+  <%}%>
+  <hr class="mainseparator" />
+
+  <form
+    action="/updateuser/<%=User.id%>"
+    method="post"
+    enctype="multipart/form-data"
+    class="form-floating mb-3"
+  >
+    <div class="mb-3">
+      <input
+        class="form-control"
+        type="file"
+        id="profileimage"
+        name="profileimage"
+        accept="image/png image/jpeg"
+        value="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+        e%
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-envelope"></i> </span>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="<%=User.email%>"
+        value="<%=User.email%>"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        name="phone"
+        placeholder="<%=User.phone%>"
+        value="<%=User.phone%>"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text"><i class="bi bi-linkedin"></i></span>
+      <input
+        type="text"
+        class="form-control"
+        id="linkedin"
+        name="linkedin"
+        placeholder="<%=User.linkedin%>"
+        value="<%=User.linkedin%>"
+      />
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Update</button>
+    </div>
+  </form>
+</div>

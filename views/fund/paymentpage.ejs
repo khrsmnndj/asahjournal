@@ -1,0 +1,207 @@
+<body>
+  <nav class="searchcontainer shadow-sm">
+    <a href="/" class="navhome">
+      <div class="logocontainer">
+        <div class="logoimg">
+          <img class="logo" src="/contents/flip-a-bird.gif" alt="" />
+        </div>
+        <div class="logoname">Asah<br />Journal</div>
+      </div>
+      <span class="tooltiptext">Beranda</span>
+    </a>
+
+    <div class="searchblock">
+      <form class="searchform" action="/search" method="post">
+        <input
+          class="searchitem shadow-sm"
+          type="search"
+          name="request"
+          id="request"
+          spellcheck="false"
+          placeholder="Cari pustaka..."
+        />
+        <i class="bx bx-search icon"></i>
+      </form>
+    </div>
+    <% if (admin) {%>
+    <a href="/admin" class="accountcontainer">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt=""
+        />
+      </div>
+    </a>
+    <%} else {%>
+    <a href="/profile" class="accountcontainer">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt=""
+        />
+      </div>
+    </a>
+    <%}%>
+  </nav>
+
+  <nav class="navigation">
+    <a href="/allpagehistory" class="navitem">Pustaka</a>
+    <div class="dropdown">
+      <a
+        class="navitem dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Kategori
+      </a>
+
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li>
+          <a class="dropdown-item" href="/category/Kedokteran">Kedokteran</a>
+        </li>
+        <li><a class="dropdown-item" href="/category/Teknik">Teknik</a></li>
+        <li><a class="dropdown-item" href="/category/Umum">Umum</a></li>
+      </ul>
+    </div>
+    <a href="/" class="navitem"
+      >Jasa Web
+      <span class="tooltiptext">Coming Soon</span>
+    </a>
+    <a href="/payment" class="navitem">Deposit</a>
+    <a href="/logout" class="navitem">Logout</a>
+  </nav>
+
+  <main class="mainpayment" role="payment">
+    <div class="paycontainer">
+      <h1 class="credtitle mb-3">Ayo Deposit Sekarang!</h1>
+      <div class="paycard shadow-lg">
+        <div class="paytop">
+          <div class="paylogo"></div>
+          <img src="/contents/dana.png" alt="" class="paysp" />
+        </div>
+
+        <div class="paymentinfo">
+          <p class="payinfo">Rekening:</p>
+          <p class="paynumber">089 670 402 212</p>
+        </div>
+
+        <div class="paydate"><%=Today%></div>
+      </div>
+
+      <div class="infopaymentcontainer">
+        <%if (dataprob !=''){%>
+        <h3 class="credtitle"><%=dataprob%></h3>
+        <%}else{%>
+        <h3 class="credtitle">Manfaatkan waktumu untuk berkarya!</h3>
+        <%}%>
+        <div class="infolist">
+          <p>Untuk deposit, ikuti langkah berikut:</p>
+          <ol>
+            <li>Buka aplikasi DANA-mu.</li>
+            <li>Pilih opsi kirim.</li>
+            <li>Cari nomor telepon 089 670 402 212.</li>
+            <li>Masukan nominal sesuai jumlah deposit.</li>
+            <li>Tap lanjut.</li>
+            <li>Screenshot bukti pembayaranmu.</li>
+            <li>
+              Submit bukti pembayaran di https//www.asahjournal.com/payment
+            </li>
+            <li>Tunggu admin beberapa saat untuk memeriksa pembayaran.</li>
+            <li>Jika sudah terverifikasi maka saldo akan masuk ke dompetmu.</li>
+            <li>Selesai.</li>
+          </ol>
+          <div class="postbuttonarticle">
+            <button
+              type="button"
+              class="btn btn-success shadow-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              data-bs-whatever="@mdo"
+            >
+              Submit Bukti Pembayaran
+            </button>
+
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Submit Pembayaran
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form
+                      action="/payment"
+                      method="post"
+                      enctype="multipart/form-data"
+                    >
+                      <div class="mb-3">
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="upload"
+                          name="upload"
+                          accept="image/jpg image/png"
+                          required
+                        />
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Rp</span>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="price"
+                          name="price"
+                          min="0"
+                          placeholder="Masukan harga... contoh: 2000, tanpa titik atau koma"
+                          required
+                        />
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Batal
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                          Unggah
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footercontainer">
+    <p>Contact</p>
+    <a class="contactinfo" href="#">+62 812 345 6789</a>
+    <p>&copy; Copyright 2022 | Jorden Junior</p>
+  </footer>
+</body>

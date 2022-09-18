@@ -1,0 +1,432 @@
+<body>
+  <nav class="searchcontainer shadow-sm">
+    <a href="/" class="navhome">
+      <div class="logocontainer">
+        <div class="logoimg">
+          <img class="logo" src="/contents/flip-a-bird.gif" alt="im" />
+        </div>
+        <div class="logoname">Asah<br />Journal</div>
+      </div>
+      <span class="tooltiptext">Beranda</span>
+    </a>
+
+    <div class="searchblock">
+      <form class="searchform" action="/search" method="post">
+        <input
+          class="searchitem shadow-sm"
+          type="search"
+          name="request"
+          id="request"
+          spellcheck="false"
+          placeholder="Cari pustaka..."
+        />
+        <i class="bx bx-search icon"></i>
+      </form>
+    </div>
+    <% if (admin) {%>
+    <a href="/admin" class="accountcontainer">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt="im"
+        />
+      </div>
+    </a>
+    <%} else {%>
+    <a href="/profile" class="accountcontainer">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt="im"
+        />
+      </div>
+    </a>
+    <%}%>
+  </nav>
+
+  <nav class="navigation">
+    <a href="/allpagehistory" class="navitem">Pustaka</a>
+    <div class="dropdown">
+      <a
+        class="navitem dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Kategori
+      </a>
+
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li>
+          <a class="dropdown-item" href="/category/Kedokteran">Kedokteran</a>
+        </li>
+        <li><a class="dropdown-item" href="/category/Teknik">Teknik</a></li>
+        <li><a class="dropdown-item" href="/category/Umum">Umum</a></li>
+      </ul>
+    </div>
+    <a href="/" class="navitem"
+      >Jasa Web
+      <span class="tooltiptext">Coming Soon</span>
+    </a>
+    <a href="/payment" class="navitem">Deposit</a>
+    <a href="/logout" class="navitem">Logout</a>
+  </nav>
+
+  <main class="maincontainer shadow-sm">
+    <h1 class="maintitle">Postingan Terbaru</h1>
+    <p class="maincontent" role="main-information">
+      Temukan postingan terbaru.
+    </p>
+    <a href="/allpagehistory" class="btn btn-success">Selengkapnya</a>
+    <hr class="mainseparator" />
+    <div class="postcontainer">
+      <% if (latest !=''){ latest.forEach((article) => { %>
+
+      <div class="card shadow-sm" style="width: 12rem">
+        <div class="card-body">
+          <div class="card-tooltip">
+            <h5 class="card-title"><%=article.title%></h5>
+            <span class="tooltiptext"><%=article.title%></span>
+          </div>
+          <h6 class="card-subtitle mb-2 text-muted"><%=article.author%></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%=article.updatedAt%></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%=article.price%></h6>
+          <p class="card-text"><%=article.content%></p>
+          <a href="/postparticle/<%=article.id%>" class="card-link">Lihat</a>
+
+          <span class="badge cat text-bg-dark"><%=article.category%></span>
+          <%if(article.version=='Premium'){%>
+          <span class="badge pay text-bg-warning"><%=article.version%></span>
+          <%}else{%>
+          <span class="badge pay text-bg-success"><%=article.version%></span>
+          <%}%>
+        </div>
+      </div>
+      <% }) } else { %>
+      <h5>No post found.</h5>
+
+      <% } %>
+    </div>
+  </main>
+
+  <div
+    class="headercontainer"
+    role="payment-information"
+    aria-label="payment-information"
+  >
+    <div class="headertext">
+      <h2 class="headertitle">Bright Future Upon Us</h2>
+      <p class="headercontent">
+        <i>
+          "Orang biasa hanya bicara. Orang yang baik akan menjelaskan. Orang
+          yang lebih tinggi akan menunjukkan. Orang hebat akan menginspirasi
+          orang lain untuk melihat diri mereka sendiri."
+        </i>
+        <span> -Harvey Mackay </span>
+        <br />
+        <br />
+        <i>
+          "Bayangkan jika karya anda yang berharga 5000 rupiah, secara instan
+          dapat membantu 100 orang dengan kebutuhan yang serupa, maka anda juga
+          akan secara instan mendapatkan 500.000 rupiah! Jadilah inspirasi!"
+        </i>
+        <span> -Admin Asah Journal </span>
+      </p>
+      <a href="/payment" class="btn btn-light">Deposit Sekarang</a>
+      <p class="cancelinfo">Batalkan kapan saja.</p>
+    </div>
+    <div class="headerimg">
+      <img class="headimage" src="/contents/header.jpg" alt="im" />
+    </div>
+  </div>
+
+  <div
+    class="promotioncontainer"
+    role="payment-information"
+    aria-label="payment-information"
+    style="background-color: #05716c"
+  >
+    <div class="headertext">
+      <h2 class="headertitle">Perlu Webapp untuk Portofolio?</h2>
+      <p class="headercontent">
+        Jutaan orang melakukan pencarian di mesin pencarian, lalu kemana mereka
+        diarahkan?, betul! Pada beberapa website yang berkaitan dengan apa yang
+        mereka cari. Selain itu website saat ini telah lebih maju, tidak hanya
+        statis (sebagai pengumuman tanpa interaksi), namun juga dinamis (dapat
+        berinteraksi) dengan orang-orang yang berkunjung. Website yang dinamis
+        mampu mempermudah owner dalam melakukan beberapa otomasi kegiatan yang
+        biasanya dilakukan manual, seperti pembayaran otomatis, manajemen
+        penjadwalan, melakukan posting sesuai urutan waktu, kategori maupun
+        indikator lainnya. Dengan begitu akan menghemat waktu pemilik website
+        dalam melakukan promosi produk maupun karya. Jadi tunggu apalagi?
+      </p>
+      <a class="btn btn-light">Segera Hadir</a>
+      <p class="cancelinfo">Website dinamis yang dipegang user.</p>
+    </div>
+    <div class="promotionimg">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="true"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="/contents/pexels1.jpg"
+              class="d-block w-100 headimage"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/contents/pexels2.jpg"
+              class="d-block w-100 headimage"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/contents/pexels3.jpg"
+              class="d-block w-100 headimage"
+              alt="..."
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="postbuttonarticle">
+    <button
+      type="button"
+      class="stickypostbutton shadow-sm"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo"
+    >
+      <i class="bx bxs-edit-alt goitem"></i>
+    </button>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Posting Artikel</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="/submit" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  name="title"
+                  placeholder="Judul artikel..."
+                  required
+                />
+              </div>
+              <select
+                class="form-select mb-3"
+                aria-label="Default select example"
+                id="category"
+                name="category"
+                required
+              >
+                <option selected disabled>Pilih kategori</option>
+                <option value="Kedokteran">Kedokteran</option>
+                <option value="Teknik">Teknik</option>
+                <option value="Umum">Umum</option>
+              </select>
+              <select
+                class="form-select mb-3"
+                aria-label="Default select example"
+                id="payfor"
+                name="payfor"
+                required
+              >
+                <option selected disabled>Pilih tipe</option>
+                <option value="Free">Gratis</option>
+                <option value="Premium">Premium</option>
+              </select>
+              <div class="mb-3">
+                <span>Halaman daftar isi</span>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="frontfiles"
+                  name="frontfiles"
+                  accept="application/pdf"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <span>Full file</span>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="upload"
+                  name="upload"
+                  accept="application/pdf"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  id="content"
+                  name="content"
+                  rows="3"
+                  placeholder="Sinopsis artikel..."
+                  required
+                ></textarea>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Rp</span>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="price"
+                  name="price"
+                  min="0"
+                  placeholder="Masukan harga... contoh: 2000, tanpa titik atau koma"
+                  required
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Batal
+                </button>
+                <button type="submit" class="btn btn-success">Unggah</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menubutton">
+    <button
+      class="stickymenubutton shadow-sm"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions"
+      aria-controls="offcanvasWithBothOptions"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-start"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel"
+      style="width: 300px"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          <a href="/profile" class="userviewnavitem"
+            ><i class="bi bi-file-earmark-person-fill"></i> | Profile</a
+          >
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="userviewcontent">
+          <img
+            src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+            alt="im"
+            class="userimage"
+            style="width: 40%"
+          />
+          <p class="username"><%=User.username%></p>
+          <p class="useremail"><%=User.email%></p>
+          <p class="useremail"><%=User.phone%></p>
+          <p class="useremail"><%=User.linkedin%></p>
+          <p class="userpoint">Rp <%=User.wallet%></p>
+          <p class="userpostcount"><%=Post.length%> Post</p>
+          <div style="padding-left: 40px">
+            <a href="/payment" class="btn btn-secondary">Deposit</a>
+            <a href="/updateuser/<%=User.id%>" class="btn btn-success"
+              >Update Profile</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footercontainer">
+    <p>Contact | <a style="color:white;cursor:pointer;text-decoration:none;" href="/dev">Developer</a></p>
+    <a class="contactinfo" href="#">+62-822-3709-7333</a>
+    <p>&copy; Copyright 2022 | Jorden Junior</p>
+    
+  </footer>
+</body>

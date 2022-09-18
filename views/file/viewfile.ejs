@@ -1,0 +1,182 @@
+<body class="filebackground">
+  <nav class="searchcontainer shadow-sm">
+    <a href="/" class="navhome">
+      <div class="logocontainer">
+        <div class="logoimg">
+          <img class="logo" src="/contents/flip-a-bird.gif" alt="im" />
+        </div>
+        <div class="logoname">Asah<br />Journal</div>
+      </div>
+      <span class="tooltiptext">Beranda</span>
+    </a>
+
+    <div class="searchblock">
+      <form class="searchform" action="/search" method="post">
+        <input
+          class="searchitem shadow-sm"
+          type="search"
+          name="request"
+          id="request"
+          spellcheck="false"
+          placeholder="Cari pustaka..."
+        />
+        <i class="bx bx-search icon"></i>
+      </form>
+    </div>
+    <% if (admin) {%>
+    <a href="/admin" class="accountcontainer">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt="im"
+        />
+      </div>
+    </a>
+    <%} else if(!admin) {%>
+    <a href="/profile" class="accountcontainer">
+      <div class="accountimg">
+        <p class="accountname"><%=User.username%></p>
+        <img
+          class="profileimg"
+          src="https://www.asahjournal.com/getfile/Profiles/<%=User.image%>"
+          alt="im"
+        />
+      </div>
+    </a>
+    <%} else if(!session) {%>
+    <a href="/profile" class="accountcontainer" style="display: none">
+      <div class="accountimg">
+        <p class="accountname"></p>
+        <img class="profileimg" src="" alt="im" />
+      </div>
+    </a>
+    <%}%>
+  </nav>
+
+  <nav class="navigation">
+    <a href="/allpagehistory" class="navitem">Pustaka</a>
+    <div class="dropdown">
+      <a
+        class="navitem dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Kategori
+      </a>
+
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li>
+          <a class="dropdown-item" href="/category/Kedokteran">Kedokteran</a>
+        </li>
+        <li><a class="dropdown-item" href="/category/Teknik">Teknik</a></li>
+        <li><a class="dropdown-item" href="/category/Umum">Umum</a></li>
+      </ul>
+    </div>
+    <a href="/" class="navitem"
+      >Jasa Web
+      <span class="tooltiptext">Coming Soon</span>
+    </a>
+    <a href="/payment" class="navitem">Deposit</a>
+    <a href="/logout" class="navitem">Logout</a>
+  </nav>
+  <div class="fileviewcontainer">
+    <div class="fileinfocontainer">
+      <div class="fileviewcontent">
+        <p class="fileviewtitle"><%=Post.title%></p>
+        <a href="/userparticle/<%=Author.id%>" class="fileviewauthor"
+          >Author: <%=Author.username%></a
+        >
+        <br />
+        <p class="fileviewdate">Email: <%=Author.email%></p>
+        <p class="fileviewdate">Ph: <%=Author.phone%></p>
+        <p class="fileviewdate">LinkedIn: <%=Author.linkedin%></p>
+        <br />
+        <p class="fileviewdate">Dibuat: <%=Post.updatedAt%></p>
+        <p class="fileviewdate">Harga: Rp<%=Post.price%></p>
+
+        <p class="fileviewinfo"><%=Post.content%></p>
+
+        <%if(Post.version=='Premium'){if(Author.username!=User.username){%>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Beli Artikel
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Konfirmasi Pembelian
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>Judul: <%=Post.title%></p>
+                <p>Author: <%=Author.username%></p>
+                <p>Harga: Rp <%=Post.price%></p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <form
+                  action="/buypost/<%=Post.id%>"
+                  method="get"
+                  enctype="multipart/form-data"
+                >
+                  <button type="submit" class="btn btn-success">
+                    Konfirmasi
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%}}%>
+      </div>
+    </div>
+    <div class="fileviewer">
+      <%if (Post.version=='Premium'){%>
+      <embed
+        class="embedfile"
+        src="https://www.asahjournal.com/getfile/Articles/<%=Post.frontfile%>"
+        type="application/pdf"
+      />
+      <%} else {%>
+      <embed
+        class="embedfile"
+        src="https://www.asahjournal.com/getfile/Articles/<%=Post.file%>"
+        type="application/pdf"
+      />
+
+      <%}%>
+    </div>
+  </div>
+</body>

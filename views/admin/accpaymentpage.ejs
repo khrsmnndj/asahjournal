@@ -1,0 +1,44 @@
+<div class="card m-5" style="height: 80vh;">
+  <h5 class="card-header">INVOICE</h5>
+  <div class="card-body">
+    <h5 class="card-title mt-3">Bukti Pembayaran</h5>
+    <img src="https://asahjournal.com/getfile/Payments/<%=Payment.image%>" class="img-fluid" alt="im" style="height: 40vh;">
+    <h5 class="card-title">Request Deposit</h5>
+          <table>
+            <tr class="headingpost contentpost">
+              <th>Date</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Request</th>
+              <th>Saldo</th>
+              <th>Kode</th>
+            </tr>
+  
+
+            <tr class="contentpost">
+              <td><%=Payment.updatedAt%></td>
+              <td>
+                <%=Payment.user%></a>
+              </td>
+              <td>
+                <%=User.email%>
+              </td>
+              <td>Rp<%=Payment.price%></td>
+              <td>Rp<%=wallet%></td>
+              <td>
+                <%=kode%>
+              </td>
+            </tr>
+
+          </table>
+    <p class="card-text mt-3">Pembayaran akan diverifikasi dalam waktu 2x24 Jam.</p>
+
+    
+    <%if(User.admin){%>
+    <a href="/acceptpayment/<%=Payment.id%>" class="btn btn-success">Accept</a>
+    <a href="/admin" class="btn btn-secondary">Back</a>
+    <%} else {%>
+      <a href="/profile" class="btn btn-secondary">Back</a>
+    <%}%>
+  </div>
+</div>

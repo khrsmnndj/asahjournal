@@ -1,0 +1,1180 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+}
+
+/*Homepage*/
+
+.searchcontainer {
+    height: 100px;
+    display: grid;
+    grid-template-columns: 2fr 8fr 1fr;
+    position: sticky;
+    top: 0;
+    padding: 10px 50px;
+    z-index: 2;
+    background-color: #fff;
+}
+
+.logocontainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.logoimg {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+
+}
+
+.logo {
+    height: 60px;
+    border-radius: 10px;
+}
+
+.logoname {
+    color: rgb(1, 80, 54);
+    font-size: 20pt;
+    font-weight: 100;
+    padding-left: 10px;
+}
+
+.searchblock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.searchform {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+
+}
+
+.searchform i {
+    position: relative;
+    top: 8px;
+    right: 40px;
+    font-size: 22pt;
+    font-weight: 100;
+    color: rgb(163, 163, 163);
+}
+
+
+.searchitem {
+    width: 70%;
+    min-width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid 1px rgb(199, 250, 233);
+
+}
+
+.searchitem:focus {
+
+    border: solid 1px rgb(1, 145, 125);
+    outline: none;
+    box-shadow:
+        0.9px 0.6px 5.3px rgba(0, 0, 0, 0.016),
+        2.9px 2px 17.9px rgba(0, 0, 0, 0.024),
+        13px 9px 80px rgba(0, 0, 0, 0.04);
+}
+
+input[type="search"] {
+    padding-left: 20px;
+}
+
+
+.accountcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.accountimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    padding: 2px;
+    font-weight: 500;
+    color: black;
+    padding-left: 15px;
+}
+
+.accountname{
+    margin-top: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.accountimg:hover {
+    background-color: rgb(1, 80, 54);
+    border-radius: 50px;
+    transition: 0.2s ease;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: white;
+}
+
+.profileimg {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid rgb(180, 223, 219) 0.5px;
+    padding: 0 200px;
+}
+
+.navitem {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 50px;
+    color: rgb(41, 161, 125);
+    font-weight: 500;
+    margin: 0 20px;
+}
+
+.navitem:hover {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.navitem:active {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.navitem .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(0, 77, 54);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    top: 65px;
+    z-index: 1;
+}
+
+.navitem:hover .tooltiptext {
+    visibility: visible;
+}
+
+.navhome {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 30px;
+    color: rgb(41, 161, 125);
+    font-weight: 500;
+    margin: 20px 20px;
+}
+.navhome .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(0, 77, 54);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    top: 95px;
+    z-index: 1;
+}
+
+.navhome:hover .tooltiptext {
+    visibility: visible;
+}
+
+.maincontainer{
+    padding: 40px 50px;
+}
+
+.mainseparator{
+    margin: 20px 0;
+    color:rgb(11, 49, 35);
+}
+
+.maintitle {
+    margin: 10px 0;
+}
+
+.maincontent {
+    margin-bottom: 20px;
+    color: rgb(11, 49, 35);
+}
+
+.headercontainer {
+    display: grid;
+    background-color: rgb(1, 80, 54);
+    grid-template-columns: 1.2fr 1fr;
+    padding: 80px 50px;
+}
+
+.headertext {
+    font-weight: 100;
+    padding-right: 50px;
+}
+
+.headertitle {
+    color: white;
+    margin: 20px 0;
+
+}
+
+.headercontent {
+    margin-bottom: 30px;
+    color: white;
+}
+
+.headerbutton {
+    border-radius: 3px;
+    padding: 10px 30px;
+    background-color: rgb(1, 107, 72);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.headerbutton:hover {
+    background-color: rgb(1, 80, 54);
+}
+
+.cancelinfo {
+    margin: 10px 5px;
+    color: white;
+    font-size: 10pt;
+    font-weight: 100;
+}
+
+.headerimg {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+}
+
+
+.headimage {
+    height: 50vh;
+    border-radius: 40px;
+    box-shadow:
+    6px 9px 20px rgba(0, 0, 0, 0.1);
+    
+}
+
+.promotioncontainer {
+    display: grid;
+    background-color: rgb(1, 80, 54);
+    grid-template-columns: 1.2fr 1fr;
+    padding: 80px 50px;
+}
+
+.headimg {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.postnav {
+    display: flex;
+    justify-content: left;
+    border-bottom: solid rgb(180, 223, 219) 0.5px;
+    margin: 0 30px;
+}
+
+.postitemnav {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    height: 50px;
+    color: rgb(41, 161, 125);
+    font-weight: 500;
+    margin: 0 20px;
+}
+
+.postitemnav:hover {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.postitemnav:active {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.postcontainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(195px, 0.7fr));
+    margin: 20px 10px;
+    transition: 0.1s ease;
+}
+
+.postitemcontainer {
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 12px;
+    background-color: white;
+    border: solid rgb(180, 223, 219) 0.5px;
+    border-radius: 10px;
+    height: 250px;
+    width: 180px;
+    box-shadow:
+        0.9px 0.6px 5.3px rgba(0, 0, 0, 0.016),
+        2.9px 2px 17.9px rgba(0, 0, 0, 0.024),
+        13px 9px 80px rgba(0, 0, 0, 0.04);
+}
+
+.postimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.postimage {
+    border-radius: 10px;
+    width: 160px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.postauthor {
+    color: rgb(20, 110, 83);
+    font-size: 10pt;
+    font-weight: 100;
+}
+
+.posttitle {
+    color: rgb(14, 80, 60);
+    font-size: 13pt;
+    font-weight: 300;
+    margin: 5px 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.postdate {
+    color: rgb(20, 110, 83);
+    font-size: 10pt;
+    font-weight: 100;
+}
+
+.footercontainer {
+    position: relative;
+    bottom: 0;
+    height: 20vh;
+    padding: 40px 20px;
+    background-color: rgb(0, 41, 29);
+    color: white;
+}
+
+/* .footercontainer>p {
+    margin: 10px 0;
+} */
+
+.contactinfo {
+    text-decoration: none;
+    color: white;
+}
+
+@media only screen and (max-width: 900px) {
+    .maincontainer{
+        padding:0;
+    }
+    .searchcontainer {
+        display: grid;
+    }
+
+    .logocontainer {
+        display: none;
+    }
+
+    .navhome{
+        display: none;
+    }
+
+    .accountcontainer {
+        display: none;
+    }
+
+    .navigation {
+        padding: 0 100px;
+    }
+
+    .navitem {
+        margin: 0 20px;
+    }
+
+    .searchitem {
+        min-width: 380px;
+    }
+
+}
+
+@media only screen and (max-width: 920px) {
+
+    .headercontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .headerimg {
+        display: none;
+    }
+
+    .promotioncontainer {
+        grid-template-columns: none;
+    }
+
+    .headimg{
+        display: flex;
+        justify-content: center;
+        width: 120%;
+    }
+
+}
+
+/*Homepage*/
+
+/* Fileview */
+
+.filebackground {
+    display: flex;
+    background-color: rgb(233, 233, 233);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.fileviewcontainer {
+    display: grid;
+    grid-template-columns: 1.2fr 4fr;
+    border-radius: 10px;
+    box-shadow:
+        0.9px 0.6px 5.3px rgba(0, 0, 0, 0.016),
+        2.9px 2px 17.9px rgba(0, 0, 0, 0.024),
+        13px 9px 80px rgba(0, 0, 0, 0.04);
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    height: 95vh;
+
+}
+
+.fileinfocontainer {
+    border-right: solid rgb(41, 161, 125) 0.5px;
+    padding-right: 20px;
+}
+
+.fileviewnav {
+    display: flex;
+    justify-content: left;
+    border-bottom: solid rgb(180, 223, 219) 0.5px;
+}
+
+.fileviewnavitem {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+    height: 30px;
+    color: rgb(41, 161, 125);
+    font-weight: 500;
+    margin: 0 20px;
+}
+
+.fileviewnavitem:hover {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.fileviewnavitem:active {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.fileviewcontent {
+    margin-top: 20px;
+    overflow-y: auto;
+}
+
+.fileviewtitle {
+    font-size: 16pt;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+.fileviewauthor {
+    font-size: 12pt;
+    color: rgb(0, 77, 54);
+    font-weight: 100;
+}
+
+.fileviewdate {
+    margin: 5px 0;
+    font-size: 12pt;
+    color: rgb(0, 77, 54);
+    font-weight: 100;
+}
+
+.fileviewinfo {
+    text-align: justify;
+    font-weight: 100;
+    margin-top: 30px;
+}
+
+.fileviewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.embedfile {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 750px) {
+
+    .fileviewcontainer {
+        grid-template-columns: none;
+        height: fit-content;
+    }
+
+    .fileinfocontainer {
+        border-right: 0;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .fileviewer {
+        height: 100vh;
+        padding: 0;
+    }
+
+}
+
+/* Fileview */
+
+/* Profile */
+
+.userbackground {
+    display: flex;
+    background-color: rgb(233, 233, 233);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.userviewcontainer {
+    display: grid;
+    grid-template-columns: 1.2fr 4fr;
+    border-radius: 10px;
+    box-shadow:
+        0.9px 0.6px 5.3px rgba(0, 0, 0, 0.016),
+        2.9px 2px 17.9px rgba(0, 0, 0, 0.024),
+        13px 9px 80px rgba(0, 0, 0, 0.04);
+    padding: 20px 0 0 20px;
+    background-color: white;
+    width: 100%;
+    height: 130vh;
+
+}
+
+.userinfocontainer {
+    border-right: solid rgb(41, 161, 125) 0.5px;
+    padding-right: 20px;
+}
+
+.userviewnav {
+    display: flex;
+    justify-content: left;
+    border-bottom: solid rgb(180, 223, 219) 0.5px;
+}
+
+.userviewnavitem {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(41, 161, 125);
+    font-weight: 500;
+    margin: 0 20px;
+}
+
+.userviewnavitem:hover {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.userviewnavitem:visited {
+    border-bottom: solid rgb(0, 77, 54) 1px;
+    color: rgb(0, 77, 54);
+}
+
+.userviewcontent {
+    margin-top: 20px;
+    display: block;
+}
+
+.userimage {
+    border-radius: 30px;
+    margin: 20px 40px;
+    width: 70%;
+
+}
+.userimageupdate {
+    border-radius: 30px;
+    margin-bottom: 20px;
+    width: 20%;
+}
+
+.username {
+    font-size: 16pt;
+    font-weight: 100;
+    margin: 0 40px;
+}
+
+.useremail {
+    font-size: 10pt;
+    font-weight: 100;
+    margin: 5px 40px;
+}
+
+.userpoint {
+    font-size: 12pt;
+    font-weight: 100;
+    margin: 20px 40px 3px 40px;
+}
+
+.userpostcount {
+    font-size: 12pt;
+    font-weight: 100;
+    margin: 0 40px;
+    margin-bottom: 40px;
+}
+
+.userbutton {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 40px;
+}
+
+.postinfocontainer {
+    padding: 0 20px;
+}
+
+table {
+    width: 100%;
+}
+
+.postscroll {
+    height: 80vh;
+    overflow: auto;
+}
+
+.whitespace {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    height: 30px;
+    margin-bottom: 50px;
+}
+
+.whitespace h3 {
+    margin-top: 20px;
+}
+
+.contentpost {
+    display: grid;
+    grid-template-columns: 1.5fr 6fr 2fr 1.5fr 1fr 1fr;
+    text-align: center;
+}
+
+.headingpost {
+    position: sticky;
+    top: 30px;
+}
+
+th {
+
+    background-color: rgb(1, 80, 54);
+    color: white;
+    font-size: 10pt;
+    font-weight: 100;
+
+}
+
+tr>td {
+    color: rgb(1, 80, 54);
+    font-size: 10pt;
+    font-weight: 100;
+    border-bottom: solid rgb(1, 80, 54) 0.5pt;
+    height: 25px;
+    padding-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+tr>td:hover {
+    background-color: rgb(233, 230, 230);
+}
+
+td>a {
+    text-decoration: none;
+    color: rgb(1, 80, 54);
+    font-weight: 100;
+
+}
+
+@media only screen and (max-width: 900px) {
+    .postinfocontainer{
+        padding:0;
+    }
+    .userviewcontainer {
+        grid-template-columns: none;
+    }
+
+    .userinfocontainer {
+        display: none;
+    }
+    .userviewnavitem{
+        padding: 20px 0;
+    }
+    .userimageupdate{
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 1500px) {
+    .userimageupdate{
+        width: 30%;
+    }
+}
+
+/* Profile */
+
+/* Credentials */
+
+.credcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+
+}
+
+.credtitle {
+    display: flex;
+    justify-content: center;
+    font-size: 30pt;
+    font-weight: 200;
+    margin: 0 20px 60px 20px;
+}
+
+.credbottom{
+    margin-bottom: 100px;
+}
+
+@media only screen and (max-width: 1080px) {
+
+    .credtitle {
+        margin: 100px 0 0 0;
+    }
+
+
+}
+
+/* Credentials */
+
+/* 404 */
+
+.nfbg {
+    display: flex;
+    justify-content: center;
+    padding: 150px 0;
+}
+
+.nfcontainer {
+    display: inline;
+    width: 80%;
+}
+
+.nf404 {
+    font-family: 'Cabin Sketch', cursive;
+    text-align: center;
+    font-size: 100pt;
+}
+
+@media only screen and (max-width: 750px) {
+    .frog404container {
+        display: none;
+    }
+}
+
+/* 404 */
+
+/* ADMIN */
+
+.adminbody {
+    display: flex;
+    background-color: rgb(233, 233, 233);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.admincontainer {
+    display: grid;
+    grid-template-columns: 1.2fr 4fr;
+    border-radius: 10px;
+    box-shadow:
+        0.9px 0.6px 5.3px rgba(0, 0, 0, 0.016),
+        2.9px 2px 17.9px rgba(0, 0, 0, 0.024),
+        13px 9px 80px rgba(0, 0, 0, 0.04);
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    height: 95vh;
+}
+
+.adminleft {
+    display: flex;
+    flex-direction: column;
+    border-right: solid rgb(41, 161, 125) 0.5px;
+    margin: 10px;
+    color: rgb(1, 80, 54);
+}
+
+.admincontrol {
+    border-bottom: solid rgb(41, 161, 125) 0.5px;
+    padding: 10px 0;
+    width: 95%;
+    color: rgb(1, 80, 54);
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.adminright {
+    margin: 10px;
+}
+
+.admincontent {
+    display: flex;
+    justify-content: center;
+
+}
+
+.credformadmin {
+    margin: 30px;
+    height: 100%;
+    display: block;
+    justify-content: center;
+}
+
+.emailformadmin {
+    margin: 5px 30px;
+}
+
+.msgfile {
+    margin: 20px 30px;
+    height: 50px;
+}
+
+.msgfilelabel {
+    margin: 5px 30px;
+}
+
+.credinputadmin {
+    margin: 5px;
+    width: 90%;
+    min-width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    border: solid 1px rgb(199, 250, 233);
+}
+
+.credinputadmin:focus {
+
+    border: solid 1px rgb(1, 145, 125);
+    outline: none;
+    box-shadow:
+        0.9px 0.6px 5.3px rgba(0, 0, 0, 0.016),
+        2.9px 2px 17.9px rgba(0, 0, 0, 0.024),
+        13px 9px 80px rgba(0, 0, 0, 0.04);
+}
+
+.adminbutton {
+    border-radius: 3px;
+    background-color: rgb(1, 107, 72);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 30px;
+    margin: 20px 30px;
+}
+
+.adminbutton:hover {
+    background-color: rgb(1, 80, 54);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+    .admincontainer {
+        grid-template-columns: 1fr 7fr;
+        padding: 5px;
+    }
+
+    .adminleft {
+        font-size: smaller;
+    }
+
+    .credformadmin {
+        margin: 10px;
+    }
+
+    .emailformadmin {
+        margin: 5px 10px;
+    }
+
+    .msgfile {
+        margin: 5px 10px;
+        height: 30px;
+    }
+
+    .msgfilelabel {
+        margin: 5px 10px;
+        font-size: smaller;
+    }
+}
+
+
+/* ADMIN */
+
+/* STICKY POSTING BUTTON */
+.stickypostbutton {
+    height: 60px;
+    width: 60px;
+    margin: 20px;
+    border-radius: 50%;
+    display: block;
+    border: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgb(1, 107, 72);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.stickypostbutton:hover {
+    height: 65px;
+    width: 65px;
+    padding: 3px;
+    transition: 0.1s ease;
+    background-color: rgb(12, 65, 49);
+}
+
+.stickymenubutton {
+    height: 60px;
+    width: 60px;
+    margin: 0 20px 100px 0;
+    border-radius: 50%;
+    border: none;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgb(1, 107, 72);
+    color: white;
+    font-size: 26pt;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.stickymenubutton:hover {
+    height: 65px;
+    width: 65px;
+    padding: 3px;
+    transition: 0.1s ease;
+    background-color: rgb(12, 65, 49);
+}
+
+.goitem{
+    position: relative;
+    padding: 16px;
+    color: white;
+    font-size: 20pt;
+}
+
+@media only screen and (max-width: 900px){
+    .stickymenubutton{
+        display: block;
+    }
+}
+
+/* STICKY POSTING BUTTON */
+
+/* PAYMENT */
+
+.mainpayment{
+    margin: 0;
+    padding: 30px;
+}
+
+.paycontainer{
+    width: 100%;
+}
+
+.paycard{
+    display: block;
+    margin: 20px auto;
+    height: 300px;
+    width: 500px;
+    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(42, 54, 94) 70.2%);
+    border-radius: 20px;
+}
+
+.paytop{
+    display: flex;
+    justify-content: space-around;
+}
+
+.paylogo{
+    margin-top: 35px;
+    border-radius: 5px;
+    height: 30px;
+    width: 50px;
+    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+}
+
+.paysp{
+    height: 100px;
+    margin-left: 200px;
+}
+
+.paymentinfo{
+    color: #fff;
+    margin-top: 60px;
+    margin-left: 30px;
+}
+
+.payinfo{
+    margin-bottom: 10px;
+}
+
+.paynumber{
+    letter-spacing: 12px;
+    font-size: 18pt;
+    font-weight: 50;
+}
+
+.paydate{
+    margin-left: 30px;
+    color: #fff;
+}
+
+.infopaymentcontainer{
+    display: block;
+    margin: 40px;
+}
+
+.infolist{
+    margin-left: 20%;
+}
+
+@media only screen and (max-width: 900px) {
+    .paylogo {
+        margin-top: 25px;
+        height: 20px;
+        width: 35px;
+    }
+    
+    .paysp {
+        height: 80px;
+    }
+    .paycard {
+
+        margin: 20px auto;
+        height: 240px;
+        width: 400px;
+        border-radius: 20px;
+        transition: ease all .5s
+    }
+
+    .paymentinfo {
+        margin-top: 30px;
+        margin-left: 24px;
+    }
+
+    .payinfo {
+        margin-bottom: 6px;
+    }
+
+    .paynumber {
+        letter-spacing: 8px;
+        font-size: 16pt;
+        font-weight: 50;
+    }
+
+    .paydate {
+        margin-left: 24px;
+    }
+
+    .infolist {
+        margin-left: 0;
+        transition: ease all 0.5s;
+    }
+
+}
+
+/* PAYMENT */

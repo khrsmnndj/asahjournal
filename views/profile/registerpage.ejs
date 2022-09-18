@@ -1,0 +1,134 @@
+<nav class="searchcontainer shadow-sm">
+  <a href="/" class="navhome">
+    <div class="logocontainer">
+      <div class="logoimg">
+        <img class="logo" src="/contents/flip-a-bird.gif" alt="" />
+      </div>
+      <div class="logoname">Asah<br />Journal</div>
+    </div>
+    <span class="tooltiptext">Beranda</span>
+  </a>
+
+  <div class="searchblock">
+    <form class="searchform" action="/search" method="POST">
+      <input
+        class="searchitem shadow-sm"
+        type="search"
+        name="request"
+        id="request"
+        spellcheck="false"
+        placeholder="Cari pustaka..."
+      />
+      <i class="bx bx-search icon"></i>
+    </form>
+  </div>
+
+  <a href="/profile" class="accountcontainer" style="display: none">
+    <div class="accountimg">
+      <p class="accountname">Jorden</p>
+      <img class="profileimg" src="/contents/profile.png" alt="" />
+    </div>
+  </a>
+</nav>
+<nav class="navigation">
+  <a href="/allpagehistory" class="navitem">Pustaka</a>
+  <div class="dropdown">
+    <a
+      class="navitem dropdown-toggle"
+      href="#"
+      role="button"
+      id="dropdownMenuLink"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Kategori
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li>
+        <a class="dropdown-item" href="/category/Kedokteran">Kedokteran</a>
+      </li>
+      <li><a class="dropdown-item" href="/category/Teknik">Teknik</a></li>
+      <li><a class="dropdown-item" href="/category/Umum">Umum</a></li>
+    </ul>
+  </div>
+  <a href="/" class="navitem">Jasa Web</a>
+  <a href="/login" class="navitem">Login</a>
+  <a href="/register" class="navitem">Register</a>
+</nav>
+<section class="vh-100 credcontainer">
+  <div>
+    <h1 class="credtitle">Ayo buat akun!</h1>
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-80">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img
+            src="/contents/phonecall.svg"
+            class="img-fluid"
+            alt="Sample image"
+          />
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 credbottom">
+          <form action="/register" method="post">
+            <div class="form-outline mb-4">
+              <input
+                type="username"
+                id="username"
+                name="username"
+                class="form-control form-control-lg"
+                placeholder="Masukan username"
+              />
+              <label class="form-label" for="username"
+                >Username tidak dapat diganti</label
+              >
+            </div>
+
+            <div class="form-outline mb-4">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control form-control-lg"
+                placeholder="Masukan email"
+              />
+              <label class="form-label" for="email">Gunakan email valid</label>
+            </div>
+
+            <div class="form-outline mb-3">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control form-control-lg"
+                placeholder="Masukan password"
+              />
+              <label class="form-label" for="password"
+                >Password minimal 8 karakter</label
+              >
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button
+                type="submit"
+                class="btn btn-success btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem"
+              >
+                Register
+              </button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">
+                Sudah punya akun?
+                <a href="/login" class="link-success">login</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footercontainer">
+  <p>Contact</p>
+  <a class="contactinfo" href="#">+62 812 345 6789</a>
+  <p>&copy; Copyright 2022 | Jorden Junior</p>
+      <a class="contactinfo" href="/dev">Developer</a>
+</footer>
