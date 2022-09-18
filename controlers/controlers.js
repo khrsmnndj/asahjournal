@@ -91,7 +91,7 @@ exports.AllPostPage = async (req, res) => {
         admin: User.admin,
       });
     } else {
-      // res.json({latest})
+      // res.json({latest});
       return res.render("searchpage/allpostout", {
         kedokteran,
         catKedokteran,
